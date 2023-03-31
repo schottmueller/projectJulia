@@ -60,7 +60,7 @@
 
    Then create a single string that contains all the letters of the alphabet and bind it to the name /alphabetstring/. Al so create another string variable /alphabetcomma/ that contains all letters of the alphabet separated by comma.
 
-   Next create an array that contains the string "letter number 1 in the alphabet is a" as first element, the string "letter number 2 in the alphabet is b" as its second element and so on until "letter numb er 26 in the alphabet is z".
+   Next create an array that contains the string "letter number 1 in the alphabet is a" as first element, the string "letter number 2 in the alphabet is b" as its second element and so on until "letter number 26 in the alphabet is z".
  # #+begin_src julia
  #  alphabet = ['a'+i for i in 0:25]
  #  alphabetstring = join(alphabet)
