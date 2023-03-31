@@ -56,7 +56,7 @@
      join([var2+i for i in 1:5])
    #+end_src
 
-2. Using comprehension create an array that contains all the lower case characters of the alphabet and bind this array to the variable name /alphabet/. (/Hint:/ Recall that /'a'+0='a'/, /'a'+1='b'/ etc.)
+2. Using list comprehension create an array that contains all the lower case characters of the alphabet and bind this array to the variable name /alphabet/. (/Hint:/ Recall that /'a'+0='a'/, /'a'+1='b'/ etc.)
 
    Then create a single string that contains all the letters of the alphabet and bind it to the name /alphabetstring/. Al so create another string variable /alphabetcomma/ that contains all letters of the alphabet separated by comma.
 
@@ -68,7 +68,7 @@
  #  ["letter number $(i) in the alphabet is $(alphabet[i])" for i in 1:26]
  # #+end_src
 
-3. Use the /string/ function with the keyword /pad/ as well as an array comprehension and the /join/ function to create a string "101001000100001000001000000100000001". Can you also do it without using /pad/ (and without typing it in digit by digit, of course)?
+3. Use the /string/ function with the keyword /pad/ as well as a list comprehension and the /join/ function to create a string "101001000100001000001000000100000001". Can you also do it without using /pad/ (and without typing it in digit by digit, of course)?
  #  #+begin_src julia
  #   join([string(1;pad=i) for i in 1:7])
  #   string(join(["1"*"0"^i for i in 1:7]),"1")

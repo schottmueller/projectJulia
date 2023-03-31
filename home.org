@@ -13,6 +13,8 @@ The skills acquired in this course will be particularly useful for writing term 
 
 *Time and place:* Thursdays 10:00-11:30, SSC basement, seminar room S37 (102/U1/-1.314)
 
+*Grading:* Your portfolio consists of the following elements. First, a "julia cheat sheet" which is a document in which you write down the julia commands and functions you have learned together with a brief description of what they do or an example. Second, a jupyter notebook with solutions to the exercises. You will work on this during class. Third, your project which will be presented in class and handed in as a jupyter notebook.
+
 * Preliminary plan
 The following plan will probably be adapted a few times over the course of the semester. I use the following abbreviations:
 - jpfnb:  [[https://juliaacademy.com/p/julia-programming-for-nervous-beginners]["Julia Programming for Nervous Beginners"]]
@@ -43,5 +45,6 @@ The following plan will probably be adapted a few times over the course of the s
 ** Material
 - julia-academy course "[[https://juliaacademy.com/p/julia-programming-for-nervous-beginners][Julia Programming for Nervous Beginners]]" used in the first few weeks
 - [[https://github.com/schottmueller/juliaForMicroTheory][notebooks]] "julia for microeconomic theory"
+- [[./exercises.org][exercises]] to be solved in class  
 ** Beyond this course
 - [[https://julia.quantecon.org/intro.html][QuantEcon]] is a graduate course in quantitative economics using julia. The material is beyond the scope of this course but might give you an idea how the tools taught in this course are used in economic research.
