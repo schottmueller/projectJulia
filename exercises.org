@@ -76,6 +76,10 @@
 
 * Week 3
 1. Out of how many code blocks does the following code block consist and what does the function /move1/ do?
+      #+begin_src julia
+     var1 = "a"
+     var2 = 'b'
+   #+end_src
    #+begin_src julia
      var = "xyz"
      function move1(input)
