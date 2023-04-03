@@ -83,8 +83,6 @@
      end
      move1(var)
    #+end_src
-
-   # l1,l2-l5,l6 and combinations of these; move first letter to back of string
    
 5. If we add the following to the code of the previous exercise
    #+begin_src julia
