@@ -1,4 +1,6 @@
 #+Title: Exercises
+#+Author: Christoph Schottmüller
+
 * Week 2
 1. Type the following code into the REPL
    #+begin_src julia
@@ -61,18 +63,18 @@
    Then create a single string that contains all the letters of the alphabet and bind it to the name /alphabetstring/. Al so create another string variable /alphabetcomma/ that contains all letters of the alphabet separated by comma.
 
    Next create an array that contains the string "letter number 1 in the alphabet is a" as first element, the string "letter number 2 in the alphabet is b" as its second element and so on until "letter number 26 in the alphabet is z".
- # #+begin_src julia
- #  alphabet = ['a'+i for i in 0:25]
- #  alphabetstring = join(alphabet)
- #  alphabetstring = join(alphabet, ", ")
- #  ["letter number $(i) in the alphabet is $(alphabet[i])" for i in 1:26]
- # #+end_src
+  #+begin_src julia :exports none
+   alphabet = ['a'+i for i in 0:25]
+   alphabetstring = join(alphabet)
+   alphabetstring = join(alphabet, ", ")
+   ["letter number $(i) in the alphabet is $(alphabet[i])" for i in 1:26]
+  #+end_src
 
 3. Use the /string/ function with the keyword /pad/ as well as a list comprehension and the /join/ function to create a string "101001000100001000001000000100000001". Can you also do it without using /pad/ (and without typing it in digit by digit, of course)?
- #  #+begin_src julia
- #   join([string(1;pad=i) for i in 1:7])
- #   string(join(["1"*"0"^i for i in 1:7]),"1")
- #  #+end_src
+   #+begin_src julia :exports none
+    join([string(1;pad=i) for i in 1:7])
+    string(join(["1"*"0"^i for i in 1:7]),"1")
+   #+end_src
 
 * Week 3
 1. Out of how many code blocks does the following code block consist and what does the function /move1/ do?
@@ -103,13 +105,13 @@
    #+end_src
 
 3. Write a function /addfractions(numerator1,denominator1,numerator2,denominator2)/ that returns the sum of the fractions $numerator1/denominator1$  and $numerator2/denominator2$ as $numeratorSum,denominatorSum$; e.g. /addfractions(1,2,1,3)/ should return $5,6$ as $1/2+1/3=5/6$. (Note that you do not have to cancel common multipliers in the result.)
- #  #+begin_src julia
- #   function addfractions(numerator1,denominator1,numerator2,denominator2)
- #	 denominatorSum = denominator1*denominator2
- #	 numeratorSum = numerator1*denominator2 + numerator2*denominator1
- #	 return numeratorSum, denominatorSum
- #   end
- #  #+end_src
+   #+begin_src julia :exports none
+    function addfractions(numerator1,denominator1,numerator2,denominator2)
+ 	 denominatorSum = denominator1*denominator2
+ 	 numeratorSum = numerator1*denominator2 + numerator2*denominator1
+ 	 return numeratorSum, denominatorSum
+    end
+   #+end_src
 
 4. Write a function /evaluatef/ that takes two inputs: (i) another function (that I call /f/ in the following), (ii) a range (e.g. 1:5). The function /evaluatef/ should evaluate /f/ at each point of the range and print the out put. For example, if $f(x)=x^2$, then $evaluatef(f,1:3)$ should print:
     #+begin_quote
@@ -119,9 +121,10 @@
     
     f(3) equals 9
     #+end_quote
- #  #+begin_src julia
- #    function evaluatef(f,range)
- #	println(join(["f($(i)) equals $(f(i)) \n" for i in range]))
- #    end
- #  #+end_src
-  (/Hint:/ to get the text line by line you have to recall what we did last week, namely list comprehension and escape sequences.)
+     (/Hint:/ to get the text printed line by line you have to recall what we did last week, namely list comprehension and escape sequences.)
+   #+begin_src julia :exports none
+     function evaluatef(f,range)
+ 	println(join(["f($(i)) equals $(f(i)) \n" for i in range]))
+     end
+   #+end_src
+ 
