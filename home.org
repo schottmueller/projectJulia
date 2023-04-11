@@ -46,7 +46,7 @@ The following plan will probably be adapted a few times over the course of the s
 - [[https://julialang.org/downloads/][website]] for downloading julia
 - [[https://uni-koeln.sciebo.de/s/B0U2oCT7IP4YMcE][screencasts]] on how to download and install julia
 ** Material
-- julia-academy course "[[https://juliaacademy.com/p/julia-programming-for-nervous-beginners][Julia Programming for Nervous Beginners]]" used in the first few weeks
+- julia-academy course "[[https://juliaacademy.com/p/julia-programming-for-nervous-beginners][Julia Programming for Nervous Beginners]]" used in the first few weeks; you can find the course notes [[https://github.com/JuliaAcademy/JuliaProgrammingForNervousBeginners/tree/main/Course%20Notes][here]]
 - [[https://github.com/schottmueller/juliaForMicroTheory][notebooks]] "julia for microeconomic theory"
 - [[https://raw.githack.com/schottmueller/projectJulia/main/exercises.html][exercises]] to be solved in class  
 ** Beyond this course
