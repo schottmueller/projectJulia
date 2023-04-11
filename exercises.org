@@ -202,7 +202,7 @@
      plot([bl,icx2],0.01:0.01:12;ylim=(0,6),label=["budget line" "indifference curve"],linewidth=2,xlabel=L"$x_1$",ylabel=L"$x_2$")
    #+end_src
 
-3. Write a function that takes the filename of a text file as input and returns how often the letter 'z' is used in this text file. Download the file allzumenschliches.txt from the course website (which contains the text of the book "Menschliches, Allzumenschliches" by Nietzsche as provided by [[https://www.gutenberg.org/ebooks/7207][Project Gutenberg]]) and count the number of 'z' in there.   
+3. Write a function that takes the filename of a text file as input and returns how often the letter 'z' is used in this text file. Download the file [[https://www.gutenberg.org/cache/epub/7207/pg7207.txt][allzumenschliches.txt]] (which contains the text of the book "Menschliches, Allzumenschliches" by F.W. Nietzsche as provided by Project Gutenberg) and count the number of 'z' in there.   
 #+begin_src julia :exports none
   function countz(filename)
       f = open(filename,"r")
@@ -218,7 +218,7 @@
   end
 #+end_src
 
-4. Generalize your function from the previous exercise such that it takes two arguments as input: the filename and the letter that should be counted (i.e. the new function can not only count how many 'z' there are but how many 'a', 'b' etc there are). If you have managed that you may want to generalize further: the actual text of the book starts in our file only in line 50 and ends in line 11500. Write a function that takes the range of lines in which the counting should take place as an additional input.
+4. Generalize your function from the previous exercise such that it takes two arguments as input: the filename and the letter that should be counted (i.e. the new function cannot only count how many 'z' there are but how many 'a', 'b' etc. there are). If you have managed that, you may want to generalize further: the actual text of the book starts in our file only in line 50 and ends in line 11500. Write a function that takes the range of lines in which the counting should take place as an additional input.
 #+begin_src julia :exports none
   function countchar(filename,searchletter)
       f = open(filename,"r")
