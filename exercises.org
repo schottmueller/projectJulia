@@ -289,7 +289,7 @@
   quadgk(x-> x*f(x),0,1)[1]
 #+end_src
 
-3. A consumer consumes 3 perfectly divisible goods $x_1$, $x_2$ and $x_3$. The price of one unit of good 1 is 1 while the price of one unit of good 2 is 2 and the price of good 3 is $3$. The utility function of the consumer is $u(x_1,x_2)=x_1*x_2*x_3$ and his income is 12. Use julia to solve the consumers utility maximization problem, i.e. how many units of each good will the consumer consume? What is his utility level? (Hint: Solve the budget constraint for the one of the variables and plug it into the objective. The resulting objective you still have to maximize over two variables.)
+3. A consumer consumes 3 perfectly divisible goods $x_1$, $x_2$ and $x_3$. The price of one unit of good 1 is 1 while the price of one unit of good 2 is 2 and the price of good 3 is $3$. The utility function of the consumer is $u(x_1,x_2)=x_1*x_2*x_3$ and his income is 12. Use julia to solve the consumers utility maximization problem, i.e. how many units of each good will the consumer consume? What is his utility level? (Hint: Solve the budget constraint for the one of the variables and plug it into the objective. The resulting objective you still have to maximize over two variables.)  
 #+begin_src julia :exports none
   using Optim
   u(x1,x2,x3) = x1*x2*x3
