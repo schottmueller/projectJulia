@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-04-11 Di 17:12 -->
+<!-- 2023-05-09 Di 11:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Exercises</title>
@@ -222,16 +222,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org652fe67">1. Week 2</a></li>
-<li><a href="#orga2cbf9f">2. Week 3</a></li>
-<li><a href="#org492c196">3. Week 4</a></li>
-<li><a href="#org014ef88">4. Week 5</a></li>
+<li><a href="#orgb7c931b">1. Week 2</a></li>
+<li><a href="#org220f93a">2. Week 3</a></li>
+<li><a href="#org02deab3">3. Week 4</a></li>
+<li><a href="#org3d42b26">4. Week 5</a></li>
+<li><a href="#org8b323b8">5. Week 6</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org652fe67" class="outline-2">
-<h2 id="org652fe67"><span class="section-number-2">1.</span> Week 2</h2>
+<div id="outline-container-orgb7c931b" class="outline-2">
+<h2 id="orgb7c931b"><span class="section-number-2">1.</span> Week 2</h2>
 <div class="outline-text-2" id="text-1">
 <ol class="org-ol">
 <li><p>
@@ -239,6 +240,7 @@ Type the following code into the REPL
 </p>
 <div class="org-src-container">
 <pre class="src src-julia">var1 = <span style="color: #93E0E3;">"a"</span>
+
 var2 = <span style="color: #93E0E3;">'b'</span>
 </pre>
 </div>
@@ -282,17 +284,19 @@ length(var2)+3
 
 [i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:10]
 
+string(<span style="color: #93E0E3;">"0"</span>,join([i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:9]))
+
 join(<span style="color: #93E0E3;">"0"</span>,[i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:9])
 
 string(<span style="color: #93E0E3;">"0"</span>,[i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:9])
-
-string(<span style="color: #93E0E3;">"0"</span>,join([i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:9]))
 
 [var1+i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:5]
 
 [string(var1,i) <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:5]
 
 join([var2+i <span style="color: #7F9F7F; font-weight: bold;">for</span> i <span style="color: #7F9F7F; font-weight: bold;">in</span> 1:5])
+
+string(2,pad=4)
 </pre>
 </div></li>
 
@@ -301,7 +305,7 @@ Using list comprehension create an array that contains all the lower case charac
 </p>
 
 <p>
-Then create a single string that contains all the letters of the alphabet and bind it to the name <i>alphabetstring</i>. Al so create another string variable <i>alphabetcomma</i> that contains all letters of the alphabet separated by comma.
+Then create a single string that contains all the letters of the alphabet and bind it to the name <i>alphabetstring</i>. Also create another string variable <i>alphabetcomma</i> that contains all letters of the alphabet separated by comma.
 </p>
 
 <p>
@@ -311,8 +315,8 @@ Next create an array that contains the string "letter number 1 in the alphabet i
 </ol>
 </div>
 </div>
-<div id="outline-container-orga2cbf9f" class="outline-2">
-<h2 id="orga2cbf9f"><span class="section-number-2">2.</span> Week 3</h2>
+<div id="outline-container-org220f93a" class="outline-2">
+<h2 id="org220f93a"><span class="section-number-2">2.</span> Week 3</h2>
 <div class="outline-text-2" id="text-2">
 <ol class="org-ol">
 <li><p>
@@ -374,8 +378,8 @@ f(3) equals 9
 </ol>
 </div>
 </div>
-<div id="outline-container-org492c196" class="outline-2">
-<h2 id="org492c196"><span class="section-number-2">3.</span> Week 4</h2>
+<div id="outline-container-org02deab3" class="outline-2">
+<h2 id="org02deab3"><span class="section-number-2">3.</span> Week 4</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>Use an <i>if</i> condition to write a function that returns the absolute value of a number.</li>
@@ -396,22 +400,32 @@ The method works as follows: We know that there is an \(x\) between \(a\) and \(
 </div>
 </div>
 
-<div id="outline-container-org014ef88" class="outline-2">
-<h2 id="org014ef88"><span class="section-number-2">4.</span> Week 5</h2>
+<div id="outline-container-org3d42b26" class="outline-2">
+<h2 id="org3d42b26"><span class="section-number-2">4.</span> Week 5</h2>
 <div class="outline-text-2" id="text-4">
 <ol class="org-ol">
 <li>A consumer consumes two perfectly divisible goods \(x_1\) and \(x_2\). The price of one unit of good 1 is 1 while the price of one unit of good 2 is 2. The utility function of the consumer is \(u(x_1,x_2)=x_1^{1/2}x_2^{1/2}\) and his income is 12. Use julia to solve the consumers utility maximization problem, i.e. how many units of each good will the consumer consume? What is his utility level?</li>
 <li>Using the previous exercise and your results from there: plot the budget line and the indifference curve at maximal utility level of the consumer in a graph. (<i>Hint:</i> write down the functional equation of the indifference curve and the budget line by hand first.)</li>
 
-<li>Write a function that takes the filename of a text file as input and returns how often the letter 'z' is used in this text file. Download the file <a href="https://www.gutenberg.org/cache/epub/7207/pg7207.txt">allzumenschliches.txt</a> (which contains the text of the book "Menschliches, Allzumenschliches" by F.W. Nietzsche as provided by Project Gutenberg) and count the number of 'z' in there.</li>
+<li>Write a function that takes the filename of a text file as input and returns how often the letter 'z' is used in this text file. Download the file <a href="https://www.gutenberg.org/cache/epub/7207/pg7207.txt">pg7207.txt</a> (which contains the text of the book "Menschliches, Allzumenschliches" by F.W. Nietzsche as provided by Project Gutenberg) and count the number of 'z' in there.</li>
 <li>Generalize your function from the previous exercise such that it takes two arguments as input: the filename and the letter that should be counted (i.e. the new function cannot only count how many 'z' there are but how many 'a', 'b' etc. there are). If you have managed that, you may want to generalize further: the actual text of the book starts in our file only in line 50 and ends in line 11500. Write a function that takes the range of lines in which the counting should take place as an additional input.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org8b323b8" class="outline-2">
+<h2 id="org8b323b8"><span class="section-number-2">5.</span> Week 6</h2>
+<div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li>Let market demand be \(D(p)=10-p\) if \(p<10\) and \(D(p)=0\) if \(p\geq10\). Let market supply be \(S(p)=2p-2\) if \(p>1\) and 0 else. Use the julia Roots.jl package to compute the market equilibrium (price and quantity). (Hint: Market equilibrium occurs where the difference between demand and supply is zero.) Plot supply and demand to verify your result graphically.</li>
+<li>Recall that the expected value of a continuously distributed random variable is calculated as \(\int_a^b xf(x)\,dx\) where \(f\) is the density of the random variable and \([a,b]\) is the support of the distribution (i.e. the density of the random variable is 0 outside the interval \([a,b]\)). Consider a random variable with triangular density namely \(f(x)=2x\) for \(x\in[0,1]\) and \(f(x)=0\) for \(x\not\in[0,1]\) and use integration with the QuadGK.jl package to compute its expected value.</li>
+<li>A consumer consumes 3 perfectly divisible goods \(x_1\), \(x_2\) and \(x_3\). The price of one unit of good 1 is 1 while the price of one unit of good 2 is 2 and the price of good 3 is \(3\). The utility function of the consumer is \(u(x_1,x_2)=x_1*x_2*x_3\) and his income is 12. Use julia to solve the consumers utility maximization problem, i.e. how many units of each good will the consumer consume? What is his utility level? (Hint: Solve the budget constraint for one of the variables and plug it into the objective. The resulting objective you still have to maximize over two variables.)</li>
 </ol>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Christoph Schottmüller</p>
-<p class="date">Created: 2023-04-11 Di 17:12</p>
+<p class="date">Created: 2023-05-09 Di 11:13</p>
 </div>
 </body>
 </html>
