@@ -302,3 +302,16 @@
   x3star = (12-x1star-2*x2star)/3
   ustar = u(x1star,x2star,x3star)
 #+end_src
+
+* Week 7
+data
+
+* Week 8
+OLS
+
+* Week 9
+1. Use the monopoly pricing problem from notebook 5 and use $\alpha=2$ but now change the cost function to $c(q)=\beta q^2$. Plot the monopoly price as a function of $\beta$.
+
+2. Use the Cournot model from notebook 5 and determine the solution if the costs of firm $i$ are not $c_i*q_i$ but $c_i*q_i^2$.
+
+3. Write a function /npv(payments,delta)/ where /payments/ is a vector of annual payments (i.e. the /n/th element of /payments/ contains a payment in year /n/) and /delta/ is a discount factor, i.e. a number between 0 and 1. The function /npv/ returns the net present value of the payment stream discounted with the discount factor. For example, if $npv([2.0,3.0,-4.0],0.9)=2.0+3.0*0.9-4.0*0.9^2$. Suppose an investor is considering to buy a house and then rent it out. The price of the house is 500.000 and the investor would charge a rent of 15000 per year. Furthermore, the investor expects to be able to resell the house after 20 years for a price of 250.000. Plot the net present value of this investment as a function of the discount factor $\delta$.
