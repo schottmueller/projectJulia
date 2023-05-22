@@ -304,9 +304,6 @@
 #+end_src
 
 * Week 7
-1. Download [[https://web.tresorit.com/l/LgFab#pgfSdjSm0wf4oAtRpkybYQ][this dataset]] on German hospitals. Open the dataset in Julia as a DataFrame using the CSV.jl and DataFrames.jl package. The meaning of some of the variables is given in the table below. Use the "describe" command to get some descriptive statistics. How many births are there on average in a hospital? How many Caesarean sections? Compute these variables only for those hospitals for which the number of births is not missing and strictly greater zero. 
-
-
 | variable name            | description                                                                           |
 |--------------------------+---------------------------------------------------------------------------------------|
 | /                        | <                                                                                     |
@@ -321,7 +318,7 @@
 |                          | (excluding the hospital itself and hospitals with the same "insitutionenkennzeichen") |
 | nBirthsInRadius          | number of births within a 50km radius (as the crow flies)                             |
 | demandPotMax             | approximate number of people living within a 50km radius                              |
-
+1. Download [[https://uni-koeln.sciebo.de/s/yr6TZMJkZc05OeB/download?path=%2Fdata&files=hospitalBirths.csv][the dataset]] "hospitalBirths.csv" on German hospitals. Open the dataset in Julia as a DataFrame using the CSV.jl and DataFrames.jl package. The meaning of some of the variables is given in the table above. Use the "describe" command to get some descriptive statistics. How many births are there on average in a hospital? How many Caesarean sections? Compute these variables only for those hospitals for which the number of births is not missing.
 #+begin_src julia :exports none
   using DataFrames, Statistics, CSV
   df = CSV.read("/home/christoph/TresoritDrive/infohealthecon/data/hospitals/hospitalBirths.csv",DataFrame)
@@ -330,10 +327,7 @@
   describe(dfB)
 #+end_src
 
-
-2. Create a new variable "shareCsection" which contains the share of Caesarean sections in a hospital. Compute the mean of "shareC" by ownership status (i.e. separately for those hospitals that are private, non-profit, and public). 
-
-
+2. Create a new variable "shareCsection" which contains the share of Caesarean sections in a hospital. Compute the mean of "shareC" by ownership status (i.e. separately for those hospitals that are private, non-profit, and public).
 #+begin_src julia :exports none
   dfB.shareC = dfB.caesarean ./ dfB.births
   dfB.owner = dfB.privat .+ 2*dfB.freigemein # creates a variable that is 0 for public, 1 for private and 2 for freigemein
@@ -342,7 +336,6 @@
 #+end_src
 
 3. Using only the hospitals with births, create a scatter plot with beds on the horizontal axis and births on the vertical axis. Can you color the dots by ownership status (i.e. private hospitals have  different color than no-profits or public)?   (Hint: use the StatsPlots.jl package.)
-
 #+begin_src julia :exports none
   using StatsPlots
   p = @df dfB scatter(:betten,:births,group=:owner,xlabel="beds",ylabel="births")
@@ -350,7 +343,6 @@
 
 
 4. Create a new variable "demandPerHospital" by dividing demandPotMax by nCompBirths. Plot demandPerHospital on the horizontal and shareC on the vertical axis in a scatter plot (maybe again coloring by ownership status) and check whether you can see a relationship between these variables or not. Also compute the correlation coefficient between these variables.
-
 #+begin_src julia :exports none
   using StatsPlots
   dfB.demandPerHospital = dfB.demandPotMax ./ dfB.nCompBirths
