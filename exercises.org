@@ -264,14 +264,14 @@
       if p<10
 	  return 10-p
       else
-	  return 0
+	  return 0.0
       end
   end
   function S(p)
       if p>1
 	  return 2p-2
       else
-	  return 0
+	  return 0.0
       end
   end
   excessDemand(p)=D(p)-S(p)
