@@ -304,10 +304,98 @@
 #+end_src
 
 * Week 7
-data
+| variable name            | description                                                                           |
+|--------------------------+---------------------------------------------------------------------------------------|
+| /                        | <                                                                                     |
+| institutionenkennzeichen | hospital id                                                                           |
+| Standortnr               | location id (only relevant for hospitals with several locations)                      |
+| betten                   | number of hospital beds                                                               |
+| privat                   | dummy: 1 if hospital is private and 0 else                                            |
+| freigemein               | dummy: 1 if hospital is a non-profit (usually owned by a religious organization)      |
+| births                   | number of births                                                                      |
+| caesarean                | number of Caesarean sections                                                          |
+| nCompBirths              | number of birth stations within a 50km radius                                         |
+|                          | (excluding the hospital itself and hospitals with the same "insitutionenkennzeichen") |
+| nBirthsInRadius          | number of births within a 50km radius (as the crow flies)                             |
+| demandPotMax             | approximate number of people living within a 50km radius                              |
+1. Download [[https://uni-koeln.sciebo.de/s/yr6TZMJkZc05OeB/download?path=%2Fdata&files=hospitalBirths.csv][the dataset]] "hospitalBirths.csv" on German hospitals. Open the dataset in Julia as a DataFrame using the CSV.jl and DataFrames.jl package. The meaning of some of the variables is given in the table above. Use the "describe" command to get some descriptive statistics. How many births are there on average in a hospital? How many Caesarean sections? Compute these variables only for those hospitals for which the number of births is not missing.
+#+begin_src julia :exports none
+  using DataFrames, Statistics, CSV
+  df = CSV.read("/home/christoph/TresoritDrive/infohealthecon/data/hospitals/hospitalBirths.csv",DataFrame)
+  describe(df)
+  dfB = dropmissing(df,:births)
+  describe(dfB)
+#+end_src
+
+2. Create a new variable "shareCsection" which contains the share of Caesarean sections in a hospital. Compute the mean of "shareC" by ownership status (i.e. separately for those hospitals that are private, non-profit, and public).
+#+begin_src julia :exports none
+  dfB.shareC = dfB.caesarean ./ dfB.births
+  dfB.owner = dfB.privat .+ 2*dfB.freigemein # creates a variable that is 0 for public, 1 for private and 2 for freigemein
+  [(df[1,:tArt],mean(df.shareC)) for df in groupby(dfB, :owner)]
+
+#+end_src
+
+3. Using only the hospitals with births, create a scatter plot with beds on the horizontal axis and births on the vertical axis. Can you color the dots by ownership status (i.e. private hospitals have  different color than no-profits or public)?   (Hint: use the StatsPlots.jl package.)
+#+begin_src julia :exports none
+  using StatsPlots
+  p = @df dfB scatter(:betten,:births,group=:owner,xlabel="beds",ylabel="births")
+#+end_src
+
+
+4. Create a new variable "demandPerHospital" by dividing demandPotMax by nCompBirths. Plot demandPerHospital on the horizontal and shareC on the vertical axis in a scatter plot (maybe again coloring by ownership status) and check whether you can see a relationship between these variables or not. Also compute the correlation coefficient between these variables.
+#+begin_src julia :exports none
+  using StatsPlots
+  dfB.demandPerHospital = dfB.demandPotMax ./ dfB.nCompBirths
+  p = @df dfB scatter(:demandPerHospital,:shareC,group=:owner,xlabel="demand per hospital",ylabel="share C-section")
+#+end_src
+   
 
 * Week 8
-OLS
+
+1. Generate 50 "random roles of a dice", i.e. use the "rand" command to -- 50 times -- select a random number in {1,2,3,4,5,6}. Next compute the frequency for each number (i.e. how many 1s, 2s etc. did we get in our 50 roles; hint: the FreqTables.jl package with its "freqtable" command is probably the quickest way of doing this). Use a ChiSquared test to test whether the dice is fair.
+#+begin_src julia :exports none
+  using StatsKit, FreqTables
+  draw50 = rand([1,2,3,4,5,6],50)
+  frequencies = freqtable(draw50)
+  ChisqTest(frequencies)
+#+end_src
+   
+2. You can extract the p-value from a test outcome using the "pvalue" command (e.g. if "test=chisqTest([20,30,40])" you get the p-value of the test testing that the frequency for all three outcomes is the same with "pvalue(test)"). Now write a function that (i) repeats the procedure from the previous exercise 100 times, (ii) each time saves the p-value and (iii) returns the number of times that the p-value was less than 0.05.
+#+begin_src julia :exports none
+  using StatsKit, FreqTables
+  function repeatTest(;n=100,k=50,level=0.05)
+  pvals = zeros(n)
+  for i in 1:n
+     draw = rand([1,2,3,4,5,6],k)
+     frequencies = freqtable(draw)
+     test = ChisqTest(frequencies)
+     pvals[i] = pvalue(test)
+  end
+  return sum(pvals.<level)
+  end
+  repeatTest()
+#+end_src
+   
+3. Use the hospital dataset from last week. Concentrating on hospitals with births, test the hypothesis that the share of Caesarean sections in private hospitals is the same as the one in non-profit hospitals. Test the hypothesis that the share of Caesarean section is the same in Bavaria and in Thüringen (hint: the "land" variable equal to "BY" are Bavarian hospitals while "TH" are hospitals in Thüringen).
+#+begin_src julia :exports none
+  using DataFrames, StatsKit, CSV
+  df = CSV.read("/home/christoph/TresoritDrive/infohealthecon/data/hospitals/hospitalBirths.csv",DataFrame)
+  dfB = dropmissing(df,:births)
+  dfB.shareC = dfB.caesarean ./ dfB.births
+
+  UnequalVarianceTTest(dfB[dfB.privat.==1,:shareC],dfB[dfB.freigemein.==1,:shareC])
+  UnequalVarianceTTest(dfB[dfB.land.=="TH",:shareC],dfB[dfB.land.=="NW",:shareC])
+#+end_src      
+
+4. Using the hospital dataset test whether larger hospitals are having a larger or smaller share of Caeserean sections by regressing "shareC" on "betten". Plot both the data and a regression line for this relationship. Repeat the regression but control for ownership status (i.e. use "privat" and "freigemein" as additional regressors).
+#+begin_src julia :exports none
+  using GLM, Plots
+  reg1 = glm(@formula(shareC~betten),dfB,Normal(),IdentityLink())
+  yhat = predict(reg1)
+  p = scatter(dfB.betten,dfB.shareC,xlabel="Betten",ylabel="share C-section",label="data")
+  plot!(dfB.betten,yhat,label="regression line")
+  reg2 = glm(@formula(shareC~betten+privat+freigemein),dfB,Normal(),IdentityLink())
+#+end_src     
 
 * Week 9
 1. Use the monopoly pricing problem from notebook 5 and use $\alpha=2$ but now change the cost function to $c(q)=\beta q^2$. Plot the monopoly price as a function of $\beta$.
