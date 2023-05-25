@@ -365,7 +365,7 @@ It function "ismissing(x)" is true if $x$ has the value "missing" and false othe
 #+BEGIN_SRC julia :exports both :returns output :tangle yes :results output
 using CSV, DataFrames
 
-df = CSV.read("CISID_HIV.csv";header=1)
+df = CSV.read("CISID_HIV.csv",DataFrame)
 
 df2 = df[ismissing.(df[:,Symbol("2010")]),:]
 
@@ -779,7 +779,7 @@ rename!(df,[:NAME,:INC10,:INC15])
 #+BEGIN_SRC julia :exports both :returns output :tangle yes :results output
 using CSV, DataFrames, Statistics
 
-df = CSV.read("CISID_HIV.csv";header=1)
+df = CSV.read("CISID_HIV.csv",DataFrame)
 
 mean(df[:,Symbol("2009")])
 
