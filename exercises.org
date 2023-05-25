@@ -344,9 +344,10 @@
 
 4. Create a new variable "demandPerHospital" by dividing demandPotMax by nCompBirths. Plot demandPerHospital on the horizontal and shareC on the vertical axis in a scatter plot (maybe again coloring by ownership status) and check whether you can see a relationship between these variables or not. Also compute the correlation coefficient between these variables.
 #+begin_src julia :exports none
-  using StatsPlots
+  using StatsPlots, Statistics
   dfB.demandPerHospital = dfB.demandPotMax ./ dfB.nCompBirths
   p = @df dfB scatter(:demandPerHospital,:shareC,group=:owner,xlabel="demand per hospital",ylabel="share C-section")
+  corr(dfb:shareC,dfB.demandPerHospital)
 #+end_src
    
 
