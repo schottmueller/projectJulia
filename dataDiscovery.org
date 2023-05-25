@@ -774,7 +774,7 @@ rename!(df,[:NAME,:INC10,:INC15])
 
 * Exploring data
 ** Univariate descriptive statistics
-
+The command "describe(df)" gives descriptive statistics for the variables of the dataframe df. One can get more detailed statistics with the command "describe(df,:detailed)" and one can restrict the variables for which one wants to have descriptive statistics by using the keyword cols, i.e. "describe(df,detailed;cols=[:country,Symbol("2009")])".
 #+name: descriptive1
 #+BEGIN_SRC julia :exports both :returns output :tangle yes :results output
 using CSV, DataFrames, Statistics
