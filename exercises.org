@@ -365,13 +365,13 @@
 #+begin_src julia :exports none
   using StatsKit, FreqTables
   function repeatTest(;n=100,k=50,level=0.05)
-  pvals = zeros(n)
-  for i in 1:n
-     draw = rand([1,2,3,4,5,6],k)
-     frequencies = freqtable(draw)
-     test = ChisqTest(frequencies)
-     pvals[i] = pvalue(test)
-  end
+      pvals = zeros(n)
+      for i in 1:n
+	  draw = rand([1,2,3,4,5,6],k)
+	  frequencies = freqtable(draw)
+	  test = ChisqTest(frequencies)
+	  pvals[i] = pvalue(test)
+      end
   return sum(pvals.<level)
   end
   repeatTest()
@@ -385,7 +385,7 @@
   dfB.shareC = dfB.caesarean ./ dfB.births
 
   UnequalVarianceTTest(dfB[dfB.privat.==1,:shareC],dfB[dfB.freigemein.==1,:shareC])
-  UnequalVarianceTTest(dfB[dfB.land.=="TH",:shareC],dfB[dfB.land.=="NW",:shareC])
+  UnequalVarianceTTest(dfB[dfB.land.=="TH",:shareC],dfB[dfB.land.=="BY",:shareC])
 #+end_src      
 
 4. Using the hospital dataset test whether larger hospitals are having a larger or smaller share of Caeserean sections by regressing "shareC" on "betten". Plot both the data and a regression line for this relationship. Repeat the regression but control for ownership status (i.e. use "privat" and "freigemein" as additional regressors).

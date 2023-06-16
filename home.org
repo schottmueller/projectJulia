@@ -1,6 +1,8 @@
 #+Title: Projektkurs Volkswirtschaftslehre: let the computer do the calculations
 
 * News
+- The registration deadline for the "examination" on KLIPS was extended. Please, register now. 
+- A sample [[https://github.com/schottmueller/projectJulia/files/11769248/projects.pdf][project description]] is available now.
 - On June 22, the seminar will be held by Dr. Marius Gramb as I am traveling. 
 - Unfortunately, some of the commands in the data discovery file were deprecated and therefore I had to change the file.
 - In week 1, we talk a bit about the course and try to install julia on your computer. *Please note that you need to bring a notebook to class every week in order to be able to work.* (It does not matter whether your operating system is Windows, MacOS, Linux or FreeBSD. However, tablets or phones with mobile operating systems like Android and iOS will not work.)
@@ -49,6 +51,7 @@ The following plan will probably be adapted a few times over the course of the s
 ** Material
 - julia-academy course "[[https://juliaacademy.com/p/julia-programming-for-nervous-beginners][Julia Programming for Nervous Beginners]]" used in the first few weeks; you can find the course notes [[https://github.com/JuliaAcademy/JuliaProgrammingForNervousBeginners/tree/main/Course%20Notes][here]]
 - [[https://github.com/schottmueller/juliaForMicroTheory][notebooks]] "julia for microeconomic theory"
-- [[https://raw.githack.com/schottmueller/projectJulia/main/exercises.html][exercises]] to be solved in class  
+- [[https://raw.githack.com/schottmueller/projectJulia/main/exercises.html][exercises]] to be solved in class
+-  [[https://github.com/schottmueller/projectJulia/files/11769248/projects.pdf][project description]]   
 ** Beyond this course
 - [[https://julia.quantecon.org/intro.html][QuantEcon]] is a graduate course in quantitative economics using julia. The material is beyond the scope of this course but might give you an idea how the tools taught in this course are used in economic research.

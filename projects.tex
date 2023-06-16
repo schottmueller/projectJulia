@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{geometry,amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{varwidth}
+\usepackage{dsfont}
+%\usepackage{lineno}\linenumbers
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{longtable}
+
+\onehalfspacing
+\usepackage[authoryear]{natbib}
+\geometry{tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{thmtools}
+\declaretheorem[style=lemma]{example}
+\renewcommand\thmcontinues[1]{continued}
+
+\usepackage{ae,aecompl}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{result}{Result}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newcommand{\Lra}{\Leftrightarrow}
+\newtheorem{defn}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem*{prop*}{Proposition}
+
+%%%%%%%%%%%%%Formatting of (sub)section headings
+\makeatletter
+ \renewcommand{\section}{\@startsection{section}{1}{0mm}{-1.5\baselineskip}{0.8\baselineskip}{\normalfont\large\centering}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}{-0.1\baselineskip}{0.5\baselineskip}{\normalfont\bf\flushleft}}
+\renewcommand{\section}{\@startsection{section}{1}{0mm}{-0.9\baselineskip}{0.5\baselineskip}{\normalfont\large\centering}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}{-0.1\baselineskip}{0.3\baselineskip}{\normalfont\bf\flushleft}}
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname
+\hspace{+0mm}\large{.}\hspace{+1.9mm}}
+\renewcommand{\@seccntformat}[2]{\csname the#1\endcsname
+\hspace{+0mm}\large{.}\hspace{+1.9mm}}
+\makeatother
+
+\begin{document}
+
+\title{Sample projects}
+\author{Christoph Schottm\"uller}
+
+
+\maketitle
+
+For both projects, please document your code, i.e. explain what you are doing. In the final presentation, you should briefly summarize the economics of the problem and then explain your code (you can also explain what problems you encountered) and show how it works and what it produces (e.g. plots etc.). 
+
+\section*{Project 1: consumption choice model of microeconomics}
+\label{sec:proj-1:-cons}
+
+In this project, you write the code to solve arbitrary utility maximization problems, consider the effect of price changes on consumption and  visualize these problems and effects. The following describes the project in more detail. (Hint: You may want to check an intermediate Microeconomics textbook to be sure to get the Slutsky and Hicks substitution effects right.)
+
+\begin{enumerate}
+\item Write a function \emph{consumptionProblem(u,p,m)} that takes as arguments the utility function, the price vector and the wealth of the consumer and returns the utility maximizing consumption vector of the consumer. Ideally, your function should work for an arbitrary number of goods.
+\item Write a function \emph{visualizeConsProb(u,p,m)} that visualizes the consumption problem for the 2 goods case (e.g. plot some appropriate indifference curves and the budget line).
+\item Write a function \emph{demand(u,pOther,m)} that plots the demand for good 1 as a function of the price of good 1 (taken the prices of the other goods as given and fix).   
+\item Write a function \emph{incomeExpansionPath(u,p)} that plots the demand for good 1 as a function of income. 
+\item Next consider a price change for one good. Write a function \emph{slutsky(u,pOld,pNew,m)} that determines the income and substitution effects if prices change from the price vector\emph{pOld} to the price vector \emph{pNew}. Write a function \emph{visualizeSlutsky(u,pOld,pNew,m)} that visualizes these effects in the two good case.
+\item Repeat the previous exercise using the Hicks substitution effect instead of the Slutsky substitution effect. 
+\item Write a function \emph{taxCompensation(u,p,m,t)} that takes a tax $t$ on good 1 as a final argument. Assume that the tax is paid for by the consumer and increases the price of good 1 by $t$. The function \emph{taxCompensation(u,p,m,t)} returns the additional income that is necessary to give the consumer the same utility with the tax as he had without the tax.
+  
+\end{enumerate}
+
+
+\section*{Project 2: permits vs. Pigouvian taxes }
+\label{sec:project-2:-permits}
+
+Some goods have negative externalities (think of greenhouse gas emissions) and are therefore over-produced form a welfare point of view if no regulation occurs. There are two main ways in which regulators intervene in such markets: first, by introducing a tax on the good. second, by restricting the quantity of a good (think of emission permits). If both the externality and demand are known, both measures are equivalent; i.e. to reduce the equilibrium quantity by $\Delta$ there is a tax rate $t(\Delta)$ that will do exactly this. If demand is uncertain, this is no longer so clear. This project analyzes numerically which instrument performs better.
+
+\begin{enumerate}
+\item Write a function \emph{equivalentTax(D,S,q)} that takes the (inverse) market demand function, (inverse) market supply function and a target quantity $q$ as arguments. The function returns the tax rate necessary to achieve quantity $q$ in equilibrium and also creates (and saves) a plot visualizing equilibrium with and without the tax. Explain why a quantity restriction by permits and Pigouvian tax leading to the same quantity both lead to the same welfare.
+\item Write a function \emph{optimalQuantity(D,S,e)} that computes the welfare maximizing quantity if each unit of production creates a negative externality of $e$; i.e. if $q$ units are produced, society suffers from a welfare decrease of $q*e$ due to the externality.
+\item In the following, use a linear inverse supply curve (i.e. $P_S(q)=b*q$) and a linear demand curve (i.e. $P_D(q)=d-q$). Assume that $d$ is random and is distributed uniformly on an interval $[f,g]$.
+  \begin{enumerate}
+  \item Write a function \emph{expectedEquivalentTax(D,S,q,f,g)} that returns the tax rate such that the expected equilibrium quantity with this tax rate equals $q$. Also write a function \emph{expectedWelfareCap(D,D,q,f,g,e)} that returns expected welfare if the quantity is capped at $q$ and a function \emph{expectedWelfareTax(D,D,q,f,g,e)} that returns expected welfare with a tax such that the expected quantity is $q$.
+  \item Check for different parameters $b$, $e$, $f$ and $g$ which regulation yields a higher welfare.\footnote{For fixed $b$ and $e$, you can think of $f$ ang $g$ as a measure of uncertainty; e.g. if $d$ is distributed on $[1,2]$, it is more uncertain than if it is distributed on $[1.3,1.7]$. } Is there a pattern?
+  \item Repeat the exercise above but instead of using a random demand let the externality $e$ be random (instead of $d$).  
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
