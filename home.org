@@ -1,6 +1,15 @@
 #+Title: Projektkurs Volkswirtschaftslehre: let the computer do the calculations
 
 * News
+- List of exercises that are part of the portfolio notebook (i.e. the notebook with exercise solutions you have to hand in at the end of the term):
+  - Week 2: E2, E3
+  - Week 3: E3, E4
+  - Week 4: E1, E2, E3
+  - Week 5: E1, E2, E3
+  - Week 6: E1, E2
+  - Week 7: E1, E3
+  - Week 8: E2, E3
+    
 - The registration deadline for the "examination" on KLIPS was extended. Please, register now. 
 - A sample [[https://github.com/schottmueller/projectJulia/files/11769248/projects.pdf][project description]] is available now.
 - On June 22, the project course will be held by Dr. Marius Gramb as I am traveling. 
