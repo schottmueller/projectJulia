@@ -1,6 +1,7 @@
 #+Title: Projektkurs Volkswirtschaftslehre: let the computer do the calculations
 
 * News
+- Please note that (i) project presentations will take place on July 13 and (ii) project (as a jupyter notebook), cheatsheet and exercises have to be handed in via email until August 1.
 - List of exercises that are part of the portfolio notebook (i.e. the notebook with exercise solutions you have to hand in at the end of the term):
   - Week 2: E2, E3
   - Week 3: E3, E4
